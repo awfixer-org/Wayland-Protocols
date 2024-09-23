@@ -296,10 +296,18 @@
           Equivalent to H.273 TransferCharacteristics code point 7.
         </description>
       </entry>
-      <entry name="linear" value="5">
-        <description summary="linear transfer function">
-          Linear transfer characteristics.
-          Equivalent to H.273 TransferCharacteristics code point 8.
+      <entry name="ext_linear" value="5">
+        <description summary="extended linear transfer function">
+          Linear transfer function defined over all real numbers.
+          Normalised electrical values are equal the normalised optical values.
+
+          This TF implies these default luminances
+          - primary color volume minimum: 0 cd/m²
+          - primary color volume maximum: 80 cd/m²
+          - reference white: 80 cd/m²
+
+          The differences to H.273 TransferCharacteristics code point 8 are
+          the definition over all real numbers and the implied luminances.
         </description>
       </entry>
       <entry name="log_100" value="6">
