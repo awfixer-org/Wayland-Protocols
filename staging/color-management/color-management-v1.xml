@@ -495,6 +495,13 @@
       <arg name="primaries" type="uint" enum="primaries"
            summary="Named color primaries"/>
     </event>
+
+    <event name="done">
+      <description summary="all features have been sent">
+        This event is sent when all supported rendering intents, features,
+        transfer functions and named primaries have been sent.
+      </description>
+    </event>
   </interface>
 
   <interface name="wp_color_management_output_v1" version="1">
