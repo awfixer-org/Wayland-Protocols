@@ -63,6 +63,11 @@
     color encoding terminology where possible. The glossary in the color-and-hdr
     repository shall be the authority on the definition of terms in this
     protocol.
+
+    Warning! The protocol described in this file is currently in the testing
+    phase. Backward compatible changes may be added together with the
+    corresponding interface version bump. Backward incompatible changes can
+    only be done by creating a new major version of the extension.
   </description>
 
   <interface name="wp_color_manager_v1" version="1">
