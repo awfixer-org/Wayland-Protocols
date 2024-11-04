@@ -1367,7 +1367,8 @@
         Image description id number is not a protocol object id. Zero is
         reserved as an invalid id number. It shall not be possible for a client
         to refer to an image description by its id number in protocol. The id
-        numbers might not be portable between Wayland connections.
+        numbers might not be portable between Wayland connections. A compositor
+        shall not send an invalid id number.
 
         This identity allows clients to de-duplicate image description records
         and avoid get_information request if they already have the image
