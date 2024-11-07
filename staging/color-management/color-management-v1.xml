@@ -1242,11 +1242,6 @@
       <description summary="maximum content light level">
         Sets the maximum content light level (max_cll) as defined by CTA-861-H.
 
-        This can only be set when set_tf_cicp is used to set the transfer
-        characteristic to Rec. ITU-R BT.2100-2 perceptual quantization system.
-        Otherwise, 'create' request shall raise inconsistent_set protocol
-        error.
-
         max_cll is undefined by default.
       </description>
 
@@ -1257,10 +1252,6 @@
       <description summary="maximum frame-average light level">
         Sets the maximum frame-average light level (max_fall) as defined by
         CTA-861-H.
-
-        This can only be set when set_tf_cicp is used to set the transfer
-        characteristic to Rec. ITU-R BT.2100-2 perceptual quantization system.
-        Otherwise, 'create' request shall raise inconsistent_set protocol error.
 
         max_fall is undefined by default.
       </description>
