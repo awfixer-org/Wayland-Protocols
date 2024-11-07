@@ -945,19 +945,17 @@
 
       <entry name="incomplete_set" value="0"
              summary="incomplete parameter set"/>
-      <entry name="inconsistent_set" value="1"
-             summary="invalid combination of parameters"/>
-      <entry name="already_set" value="2"
+      <entry name="already_set" value="1"
              summary="property already set"/>
-      <entry name="unsupported_feature" value="3"
+      <entry name="unsupported_feature" value="2"
              summary="request not supported"/>
-      <entry name="invalid_tf" value="4"
+      <entry name="invalid_tf" value="3"
              summary="invalid transfer characteristic"/>
-      <entry name="invalid_primaries" value="5"
+      <entry name="invalid_primaries" value="4"
              summary="invalid primaries or white point"/>
-      <entry name="invalid_luminance" value="6"
+      <entry name="invalid_luminance" value="5"
              summary="invalid luminance value or range"/>
-      <entry name="invalid_mastering" value="7"
+      <entry name="invalid_mastering" value="6"
              summary="invalid mastering information"/>
     </enum>
 
@@ -969,9 +967,6 @@
         The completeness of the parameter set is verified. If the set is not
         complete, the protocol error incomplete_set is raised. For the
         definition of a complete set, see the description of this interface.
-
-        Also, the combination of the parameter set is verified. If the set is
-        not consistent, the protocol error inconsistent_set is raised.
 
         If the particular combination of the parameter set is not supported
         by the compositor, the resulting image description object shall
