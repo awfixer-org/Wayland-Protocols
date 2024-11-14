@@ -4,6 +4,7 @@
   <copyright>
     Copyright © 2023-2024 Matthias Klumpp
     Copyright ©      2024 Victoria Brekenfeld
+    Copyright ©      2024 Frank Praznik
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -51,6 +52,30 @@
       It currently can only be created from a 'xdg_toplevel' via a
       'get_zone_item' request.
     </description>
+
+    <request name="get_frame_extents">
+      <description summary="request the extents of the frame bordering the item">
+        Request the extents of the frame bordering the item's content area.
+
+        If the item has no associated frame, all extents will be zero.
+
+        After a call to this request, a 'frame_extents' event must be emitted
+        with the item's frame extents.
+      </description>
+    </request>
+
+    <event name="frame_extents">
+      <description summary="the extents of the frame bordering the item">
+        The 'frame_extents' event describes the current extents of the frame
+        bordering the item's content area.
+
+        It is emitted as a response to 'get_frame_extents'.
+      </description>
+      <arg name="top" type="int" summary="current height of the frame bordering the top of the item"/>
+      <arg name="bottom" type="int" summary="current height of the frame bordering the bottom of the item"/>
+      <arg name="left" type="int" summary="current width of the frame bordering the left of the item"/>
+      <arg name="right" type="int" summary="current width of the frame bordering the right of the item"/>
+    </event>
 
     <request name="destroy" type="destructor">
       <description summary="delete this object">
