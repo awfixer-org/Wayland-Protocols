@@ -981,6 +981,15 @@
         complete, the protocol error incomplete_set is raised. For the
         definition of a complete set, see the description of this interface.
 
+        The protocol error invalid_luminance is raised if any of the following
+        requirements is not met:
+        - When max_cll is set, it must be greater than min L and less or equal
+          to max L of the mastering luminance range.
+        - When max_fall is set, it must be greater than min L and less or equal
+          to max L of the mastering luminance range.
+        - When both max_cll and max_fall are set, max_fall must be less or equal
+          to max_cll.
+
         If the particular combination of the parameter set is not supported
         by the compositor, the resulting image description object shall
         immediately deliver the wp_image_description_v1.failed event with the
