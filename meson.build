@@ -69,6 +69,7 @@ staging_protocols = {
 	'xdg-toplevel-icon': ['v1'],
 	'xwayland-shell': ['v1'],
 	'alpha-modifier': ['v1'],
+	'xdg-dbus-annotation': ['v1'],
 }
 
 protocol_files = []
