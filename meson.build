@@ -70,6 +70,7 @@ staging_protocols = {
 	'xwayland-shell': ['v1'],
 	'alpha-modifier': ['v1'],
 	'ext-workspace': ['v1'],
+	'pointer-warp': ['v1'],
 }
 
 protocol_files = []
