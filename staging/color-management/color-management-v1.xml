@@ -959,12 +959,10 @@
              summary="request not supported"/>
       <entry name="invalid_tf" value="3"
              summary="invalid transfer characteristic"/>
-      <entry name="invalid_primaries" value="4"
-             summary="invalid primaries or white point"/>
+      <entry name="invalid_primaries_named" value="4"
+             summary="invalid primaries named"/>
       <entry name="invalid_luminance" value="5"
              summary="invalid luminance value or range"/>
-      <entry name="invalid_mastering" value="6"
-             summary="invalid mastering information"/>
     </enum>
 
     <request name="create" type="destructor">
@@ -1059,7 +1057,7 @@
 
         Only names advertised with wp_color_manager_v1 event
         supported_primaries_named are allowed. Other values shall raise the
-        protocol error invalid_primaries.
+        protocol error invalid_primaries_named.
 
         If primaries have already been set on this object, the protocol error
         already_set is raised.
