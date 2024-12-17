@@ -383,8 +383,15 @@
           - primary color volume minimum: 0.005 cd/m²
           - primary color volume maximum: 1000 cd/m²
           - reference white: 203 cd/m²
-          Note: HLG is a scene referred signal. All absolute luminance values
-          used here for HLG assume a 1000 cd/m² display.
+
+          HLG is a relative display-referred signal with a specified
+          non-linear mapping to the display peak luminance (the HLG OOTF).
+          All absolute luminance values used here for HLG assume a 1000 cd/m²
+          peak display.
+
+          The default value for the reference white is a protocol addition:
+          it is suggested by Report ITU-R BT.2408-7 and is not part of
+          ARIB STD-B67 or BT.2100.
         </description>
       </entry>
     </enum>
