@@ -55,9 +55,7 @@
       associated text input, and the only communication is with the compositor.
       Initially, the input method is in the inactive state.
 
-      Requests issued in the inactive state must be accepted by the compositor.
-      Because of the serial mechanism, and the state reset on activate event,
-      they will not have any effect on the state of the next text input.
+      Requests issued in the inactive state will be ignored by the compositor.
     </description>
 
     <request name="destroy" type="destructor">
