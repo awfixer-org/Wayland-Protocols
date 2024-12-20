@@ -54,6 +54,30 @@
       to the state of a toplevel.
     </description>
 
+    <enum name="capabilities" bitfield="true">
+      <entry name="maximize" value="1" summary="ext_foreign_toplevel_handle_state_v1.state may contain maximized"/>
+      <entry name="minimize" value="2" summary="ext_foreign_toplevel_handle_state_v1.state may contain minimized"/>
+      <entry name="activated" value="4" summary="ext_foreign_toplevel_handle_state_v1.state may contain activated"/>
+      <entry name="fullscreen" value="8" summary="ext_foreign_toplevel_handle_state_v1.state may contain fullscreen"/>
+      <entry name="always-on-top" value="16" summary="ext_foreign_toplevel_handle_state_v1.state may contain always-on-top"/>
+      <entry name="sticky" value="32" summary="ext_foreign_toplevel_handle_state_v1.state may contain sticky"/>
+      <entry name="shaded" value="64" summary="ext_foreign_toplevel_handle_state_v1.state may contain shaded"/>
+    </enum>
+
+    <event name="capabilities">
+      <description summary="compositor capabilities">
+        This event advertises the capabilities supported by the compositor. If
+        a capability isn't supported, clients should hide or disable the UI
+        elements that visualize the corresponding ext_foreign_toplevel_handle_state_v1.state
+        variant.
+        
+        Compositors must send this event once after creation of an
+        ext_foreign_toplevel_state_v1 . When the capabilities change, compositors
+        must send this event again.
+      </description>
+      <arg name="capabilities" type="uint" summary="capabilities" enum="capabilities"/>
+    </event>
+
     <enum name="error">
       <description summary="ext_foreign_toplevel_state_v1 errors">
         These errors are sent in response to ext_foreign_toplevel_state_v1 requests.
