@@ -114,6 +114,9 @@
       <entry name="minimized"  value="2" summary="the toplevel is minimized"/>
       <entry name="activated"  value="4" summary="the toplevel is active"/>
       <entry name="fullscreen" value="8" summary="the toplevel is fullscreen"/>
+      <entry name="always-on-top" value="16" summary="the toplevel is always ordered to the top"/>
+      <entry name="sticky" value="32" summary="the toplevel is visible on all workspaces"/>
+      <entry name="shaded" value="64" summary="the toplevel is invisible and represented by a placeholder"/>
     </enum>
 
     <request name="destroy" type="destructor">
