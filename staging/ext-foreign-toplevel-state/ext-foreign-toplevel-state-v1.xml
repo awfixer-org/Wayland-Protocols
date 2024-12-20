@@ -83,7 +83,7 @@
         These errors are sent in response to ext_foreign_toplevel_state_v1 requests.
       </description>
       <entry name="already_constructed" value="0"
-        summary="the ext_foreign_toplevel_state_v1 was already constructed for the specified ext_foreign_toplevel_handle_v1 object"/>
+        summary="the ext_foreign_toplevel_handle_state_v1 was already constructed for the specified ext_foreign_toplevel_handle_v1 object"/>
     </enum>
 
     <request name="destroy" type="destructor">
