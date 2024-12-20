@@ -60,7 +60,7 @@
       <entry name="minimize" value="2" summary="ext_foreign_toplevel_handle_state_v1.state may contain minimized"/>
       <entry name="activated" value="4" summary="ext_foreign_toplevel_handle_state_v1.state may contain activated"/>
       <entry name="fullscreen" value="8" summary="ext_foreign_toplevel_handle_state_v1.state may contain fullscreen"/>
-      <entry name="always-on-top" value="16" summary="ext_foreign_toplevel_handle_state_v1.state may contain always-on-top"/>
+      <entry name="always_on_top" value="16" summary="ext_foreign_toplevel_handle_state_v1.state may contain always-on-top"/>
       <entry name="sticky" value="32" summary="ext_foreign_toplevel_handle_state_v1.state may contain sticky"/>
       <entry name="shaded" value="64" summary="ext_foreign_toplevel_handle_state_v1.state may contain shaded"/>
     </enum>
@@ -139,7 +139,7 @@
       <entry name="minimized"  value="2" summary="the toplevel is minimized"/>
       <entry name="activated"  value="4" summary="the toplevel is active"/>
       <entry name="fullscreen" value="8" summary="the toplevel is fullscreen"/>
-      <entry name="always-on-top" value="16" summary="the toplevel is always ordered to the top"/>
+      <entry name="always_on_top" value="16" summary="the toplevel is always ordered to the top"/>
       <entry name="sticky" value="32" summary="the toplevel is visible on all workspaces"/>
       <entry name="shaded" value="64" summary="the toplevel is invisible and represented by a placeholder"/>
     </enum>
@@ -242,7 +242,7 @@
       <entry name="minimize" value="4" summary="set_minimized and unset_minimized are available"/>
       <entry name="activated" value="8" summary="activate is available"/>
       <entry name="fullscreen" value="16" summary="set_fullscreen and unset_fullscreen are available"/>
-      <entry name="always-on-top" value="32" summary="set_always_on_top and unset_always_on_top are available"/>
+      <entry name="always_on_top" value="32" summary="set_always_on_top and unset_always_on_top are available"/>
       <entry name="sticky" value="64" summary="set_sticky and unset_sticky are available"/>
       <entry name="shaded" value="128" summary="set_shaded and unset_shaded are available"/>
     </enum>
