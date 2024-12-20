@@ -106,14 +106,14 @@
           summary="the ext_foreign_toplevel_handle_v1 was destroyed before this object"/>
     </enum>
 
-    <enum name="state">
+    <enum name="state" bitfield="true">
       <description summary="types of states on the toplevel">
         The different states that a toplevel may have.
       </description>
-      <entry name="maximized"  value="0" summary="the toplevel is maximized"/>
-      <entry name="minimized"  value="1" summary="the toplevel is minimized"/>
-      <entry name="activated"  value="2" summary="the toplevel is active"/>
-      <entry name="fullscreen" value="3" summary="the toplevel is fullscreen"/>
+      <entry name="maximized"  value="1" summary="the toplevel is maximized"/>
+      <entry name="minimized"  value="2" summary="the toplevel is minimized"/>
+      <entry name="activated"  value="4" summary="the toplevel is active"/>
+      <entry name="fullscreen" value="8" summary="the toplevel is fullscreen"/>
     </enum>
 
     <request name="destroy" type="destructor">
@@ -138,7 +138,7 @@
         The configured state must not be applied immediately. See
         ext_foreign_toplevel_handle_v1.done for details.
       </description>
-      <arg name="states" type="array" summary="array of ext_foreign_toplevel_handle_state_v1.state"/>
+      <arg name="states" type="uint" summary="bitfield of ext_foreign_toplevel_handle_state_v1.state" enum="state"/>
     </event>
 
     <event name="output_enter">
