@@ -45,6 +45,7 @@ unstable_protocols = {
 }
 
 staging_protocols = {
+	'alpha-modifier': ['v1'],
 	'commit-timing': ['v1'],
 	'content-type': ['v1'],
 	'cursor-shape': ['v1'],
@@ -56,6 +57,7 @@ staging_protocols = {
 	'ext-image-copy-capture': ['v1'],
 	'ext-session-lock': ['v1'],
 	'ext-transient-seat': ['v1'],
+	'ext-workspace': ['v1'],
 	'fifo': ['v1'],
 	'fractional-scale': ['v1'],
 	'linux-drm-syncobj': ['v1'],
@@ -67,9 +69,8 @@ staging_protocols = {
 	'xdg-system-bell': ['v1'],
 	'xdg-toplevel-drag': ['v1'],
 	'xdg-toplevel-icon': ['v1'],
+	'xdg-toplevel-tag': ['v1'],
 	'xwayland-shell': ['v1'],
-	'alpha-modifier': ['v1'],
-	'ext-workspace': ['v1'],
 }
 
 protocol_files = []
