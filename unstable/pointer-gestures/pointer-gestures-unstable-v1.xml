@@ -106,6 +106,8 @@
       <arg name="time" type="uint" summary="timestamp with millisecond granularity"/>
       <arg name="dx" type="fixed" summary="delta x coordinate in surface coordinate space"/>
       <arg name="dy" type="fixed" summary="delta y coordinate in surface coordinate space"/>
+      <arg name="dx_unaccel" type="fixed" summary="unaccelerated delta x coordinate in surface coordinate space"/>
+      <arg name="dy_unaccel" type="fixed" summary="unaccelerated delta y coordinate in surface coordinate space"/>
     </event>
 
     <event name="end">
@@ -176,6 +178,8 @@
       <arg name="time" type="uint" summary="timestamp with millisecond granularity"/>
       <arg name="dx" type="fixed" summary="delta x coordinate in surface coordinate space"/>
       <arg name="dy" type="fixed" summary="delta y coordinate in surface coordinate space"/>
+      <arg name="dx_unaccel" type="fixed" summary="unaccelerated delta x coordinate in surface coordinate space"/>
+      <arg name="dy_unaccel" type="fixed" summary="unaccelerated delta y coordinate in surface coordinate space"/>
       <arg name="scale" type="fixed" summary="scale relative to the initial finger position"/>
       <arg name="rotation" type="fixed" summary="angle in degrees cw relative to the previous event"/>
     </event>
