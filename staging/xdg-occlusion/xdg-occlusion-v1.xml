@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<protocol name="xdg_occlusion_unstable_v1">
+
+  <copyright>
+    Copyright © 2025 Guido Günther
+
+    Permission is hereby granted, free of charge, to any person obtaining a
+    copy of this software and associated documentation files (the "Software"),
+    to deal in the Software without restriction, including without limitation
+    the rights to use, copy, modify, merge, publish, distribute, sublicense,
+    and/or sell copies of the Software, and to permit persons to whom the
+    Software is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice (including the next
+    paragraph) shall be included in all copies or substantial portions of the
+    Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+    DEALINGS IN THE SOFTWARE.
+  </copyright>
+
+  <description summary="Protocol to describe occluded regions">
+    This protocol aims at describing occluded areas of a toplevel. This
+    allows fullscreen or maximized clients to avoid placing UI
+    elements in those areas.
+
+    Typical occluded areas are notches (i.e. embedding a camera) or
+    "waterfall" display edges. In the case of a notch the compositor would
+    usually supply the bounding box of the notch or an approximation by
+    multiple rectangles.
+
+    Warning! The protocol described in this file is experimental and
+    backward incompatible changes may be made. Backward compatible
+    changes may be added together with the corresponding interface
+    version bump.
+    Backward incompatible changes are done by bumping the version
+    number in the protocol and interface names and resetting the
+    interface version. Once the protocol is to be declared stable,
+    the 'z' prefix and the version number in the protocol and
+    interface names are removed and the interface version number is
+    reset.
+  </description>
+
+  <interface name="xdg_occlusion_manager_v1" version="1">
+    <description summary="Occluded display areas manager">
+      This interface allows a compositor to announce support for supplying
+      occlusion information to the client.
+    </description>
+
+    <request name="destroy" type="destructor">
+      <description summary="destroy the xdg_occlusion_manger object">
+        Using this request a client can tell the server that it is not
+        going to use the xdg_occlusion_manger object anymore.
+
+        Any objects already created through this instance are not affected.
+      </description>
+    </request>
+
+    <request name="get_occlusions">
+      <description summary="create an occlusion notifier from a xdg toplevel">
+        This creates a new xdg_occlsions object for the given toplevel.
+      </description>
+      <arg name="id" type="new_id" interface="xdg_occlusions_v1"/>
+      <arg name="toplevel" type="object" interface="xdg_toplevel"/>
+    </request>
+
+    <enum name="type">
+      <description summary="Occlusion type">
+        These values indicate the type of occlusion.
+      </description>
+
+      <entry name="notch" value="0"/>
+      <entry name="waterfall" value="1"/>
+    </enum>
+
+    <enum name="corner_position">
+      <description summary="Corner position">
+        The position of a corner on a surface
+      </description>
+
+      <entry name="top_left" value="0"/>
+      <entry name="top_right" value="1"/>
+      <entry name="bottom_right" value="2"/>
+      <entry name="bottom_left" value="3"/>
+    </enum>
+  </interface>
+
+  <interface name="xdg_occlusions_v1" version="1">
+    <description summary="occluded regions list">
+      An xdg_occlusion describes the currently occluded areas of a toplevel.
+
+      If the toplevel gets maximized or fullscreened the compositor
+      sends a list of events describing the occluded areas via this
+      interface.
+    </description>
+
+    <request name="destroy" type="destructor">
+      <description summary="destroy the xdg_occlusion object">
+        Using this request a client can tell the server that it is not
+        going to use the xdg_occlusion object anymore.
+      </description>
+    </request>
+
+    <event name="occluded_box">
+      <description summary="A rectangular occluded region">
+        The occluded_box event describes a rectangular occluded area
+        in surface-local coordinates.
+
+        This can be an approximation of e.g. a circular camera notch.
+      </description>
+      <arg name="x" type="int"
+           summary="x coordinate of the box's top left corner"/>
+      <arg name="y" type="int"
+           summary="y coordinate of the box's top left corner"/>
+      <arg name="width" type="int"/>
+      <arg name="height" type="int"/>
+      <arg name="type" type="uint" enum="type" summary="The type of occlusion"/>
+      <arg name="resolution" type="fixed">
+        <description summary="The areas resolution">
+          A resolution great 0 indicates that the occluded area
+          isn't fully opaque but has a lower resolution. The resolution is a
+          fraction of the surface's scale.
+        </description>
+      </arg>
+    </event>
+
+    <event name="occluded_corner">
+      <description summary="A rectangular occluded corner">
+        The occluded_corner event describes a rounded corner in
+        surface-local coordinates. The area towards the screen edge is
+        the occluded corner part.
+      </description>
+      <arg name="position" type="uint" enum="corner_position" summary="The position of the described corner"/>
+      <arg name="radius" type="uint" summary="The corner's radius"/>
+    </event>
+
+    <event name="done">
+      <description summary="all information about occluded regions has been sent">
+        This event is sent after all information on occluded regions has been sent.
+
+        This allows changes to the occluded regions to be seen as
+        atomic, even if they happen via multiple events.
+      </description>
+    </event>
+
+  </interface>
+</protocol>
