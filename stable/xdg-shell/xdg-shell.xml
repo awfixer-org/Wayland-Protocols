@@ -29,7 +29,7 @@
     DEALINGS IN THE SOFTWARE.
   </copyright>
 
-  <interface name="xdg_wm_base" version="6">
+  <interface name="xdg_wm_base" version="7">
     <description summary="create desktop-style surfaces">
       The xdg_wm_base interface is exposed as a global object enabling clients
       to turn their wl_surfaces into windows in a desktop environment. It
@@ -122,7 +122,7 @@
     </event>
   </interface>
 
-  <interface name="xdg_positioner" version="6">
+  <interface name="xdg_positioner" version="7">
     <description summary="child surface positioner">
       The xdg_positioner provides a collection of rules for the placement of a
       child surface relative to a parent surface. Rules can be defined to ensure
@@ -407,7 +407,7 @@
     </request>
   </interface>
 
-  <interface name="xdg_surface" version="6">
+  <interface name="xdg_surface" version="7">
     <description summary="desktop user interface surface base interface">
       An interface that may be implemented by a wl_surface, for
       implementations that provide a desktop-style user interface.
@@ -566,6 +566,8 @@
 	information to move a surface to the top left only when the client has
 	drawn itself for the maximized or fullscreen state.
 
+	The following applies to protocol version 6 or earlier.
+
 	If the client receives multiple configure events before it
 	can respond to one, it only has to ack the last configure event.
 	Acking a configure event that was never sent raises an invalid_serial
@@ -589,6 +591,23 @@
 	request referencing a serial from a configure event issued before the
 	event identified by the last ack_configure request for the same
 	xdg_surface. Doing so will raise an invalid_serial error.
+
+	The following applies to protocol versions 7 or later.
+
+	Since version 7, ack_configure is double-buffered state. See
+	wl_surface.commit for details.
+
+	The client may send ack_configure multiple times to change the acked
+	configuration sequence before committing. Committing a configuration
+	sequence consumes that sequence and all earlier sequences.
+
+	A commit must not contain a configuration sequences that has already
+	been consumed. Doing so will raise an invalid_serial error.
+
+	Committing a configuration sequence indicates that the state in the
+	commit is suitable for the state requested by that configuration
+	sequence. If a commit does not contain a configuration sequence, the
+	committed sequence is unchanged.
       </description>
       <arg name="serial" type="uint" summary="the serial from the configure event"/>
     </request>
@@ -617,7 +636,7 @@
 
   </interface>
 
-  <interface name="xdg_toplevel" version="6">
+  <interface name="xdg_toplevel" version="7">
     <description summary="toplevel surface">
       This interface defines an xdg_surface role which allows a surface to,
       among other things, set window-like properties such as maximize,
@@ -1207,7 +1226,7 @@
     </event>
   </interface>
 
-  <interface name="xdg_popup" version="6">
+  <interface name="xdg_popup" version="7">
     <description summary="short-lived, popup surfaces for menus">
       A popup surface is a short-lived, temporary surface. It can be used to
       implement for example menus, popovers, tooltips and other similar user
